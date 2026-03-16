@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
@@ -50,4 +51,9 @@ app.delete("/operaciones/:id", async (req,res)=>{
 
 app.listen(3000, () => {
     console.log("Servidor corriendo en puerto 3000");
+});
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("Servidor corriendo en puerto " + PORT);
 });
