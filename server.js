@@ -7,15 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://jorgeflotac_db_user:RTVIPv6NGOuq9kMQ@cluster0.vhpbhgn.mongodb.net/calculadora")
-.then(() => console.log("MongoDB conectado"))
-.catch(err => console.log(err));
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB conectado"))
+  .catch(err => console.log(err));
 
 const operacionSchema = new mongoose.Schema({
-    num1: Number,
-    num2: Number,
-    operacion: String,
-    resultado: Number
+  num1: Number,
+  num2: Number,
+  operacion: String,
+  resultado: Number
 });
 
 const Operacion = mongoose.model("Operacion", operacionSchema);
